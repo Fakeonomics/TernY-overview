@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red)]() [![TernY Site](https://img.shields.io/badge/TernY-Live%20Site-rose?style=for-the-badge)](https://fakeonomics.github.io/TernY-overview/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20725229.svg)](https://doi.org/10.5281/zenodo.20725229) [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red)]() [![TernY Site](https://img.shields.io/badge/TernY-Live%20Site-f43f5e?style=for-the-badge)](https://fakeonomics.github.io/TernY-overview/)
 
 # TernY: Ternary Transformer by Yuriy
 
