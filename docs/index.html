@@ -303,6 +303,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-grad
 .roadmap-card:hover{background:rgba(244,63,94,.06)!important;border-color:rgba(244,63,94,.12)!important}
 .bench-wrap{background:rgba(255,255,255,.02)}
 .cta-block{background:rgba(255,255,255,.03)}
+.landscape-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.landscape-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(251,113,133,.04) 50%,rgba(244,63,94,.06) 55%,rgba(168,85,247,.05) 60%,rgba(251,113,133,.1) 64%,rgba(244,63,94,.08) 68%,rgba(251,191,36,.05) 72%,rgba(244,63,94,.04) 76%,transparent 82%)}
+.landscape-cloud{position:absolute;bottom:0;filter:blur(45px)}
+.landscape-cloud.c1{left:-5%;width:50%;height:22vh;background:rgba(251,113,133,.07);border-radius:80% 20% 70% 30%}
+.landscape-cloud.c2{right:-5%;width:55%;height:28vh;background:rgba(168,85,247,.06);border-radius:30% 70% 40% 60%}
+.landscape-cloud.c3{left:15%;width:70%;height:18vh;background:rgba(251,191,36,.05);border-radius:50% 50% 40% 60%;filter:blur(55px)}
 </style>
 </head>
 <body>
@@ -311,6 +317,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-grad
   <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,rgba(244,63,94,.06) 0%,transparent 70%);top:-15%;left:-10%;animation-delay:0s"></div>
   <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(168,85,247,.03) 0%,transparent 70%);bottom:-10%;right:-5%;animation-delay:-8s"></div>
   <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(251,113,133,.03) 0%,transparent 70%);top:40%;right:15%;animation-delay:-15s"></div>
+</div>
+
+<div class="landscape-bg" aria-hidden="true">
+  <div class="landscape-cloud c1"></div>
+  <div class="landscape-cloud c2"></div>
+  <div class="landscape-cloud c3"></div>
 </div>
 
 <a href="#hero" class="skip-link" data-i18n="skipLink">Skip to content</a>
