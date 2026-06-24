@@ -77,13 +77,9 @@ section[id]{scroll-margin-top:70px}
 .section-label::before{content:'';width:20px;height:1.5px;background:var(--accent)}
 .section-title{font-size:clamp(28px,4.5vw,56px);font-weight:700;letter-spacing:-.025em;margin-bottom:12px;line-height:1.12;color:var(--text)}
 .section-subtitle{font-size:17px;color:var(--text-dim);max-width:520px;line-height:1.6;font-weight:400}
-.reveal{transform:perspective(800px) rotateX(4deg) translateY(30px);opacity:0;transition:transform 1.2s cubic-bezier(.77,0,.175,1),opacity .8s ease;will-change:transform}
-.reveal.visible{transform:perspective(800px) rotateX(0) translateY(0);opacity:1}
-.reveal-alt{transform:perspective(800px) rotateY(-3deg) translateY(30px);opacity:0;transition:transform 1.2s cubic-bezier(.77,0,.175,1),opacity .8s ease}
-.reveal-alt.visible{transform:perspective(800px) rotateY(0) translateY(0);opacity:1}
-.reveal-rotate{transform:perspective(600px) rotateX(2deg) rotateY(-2deg) translateY(30px);opacity:0;transition:transform 1s cubic-bezier(.65,0,.35,1),opacity .7s ease}
-.reveal-rotate.visible{transform:perspective(600px) rotateX(0) rotateY(0) translateY(0);opacity:1}
-.title-reveal{color:var(--text);transition:color 1.2s cubic-bezier(.77,0,.175,1)}
+.reveal,.reveal-alt,.reveal-rotate{opacity:1;transform:none}
+.reveal.visible,.reveal-alt.visible,.reveal-rotate.visible{opacity:1;transform:none}
+.title-reveal{color:var(--accent-light)}
 .title-reveal.visible{color:var(--accent-light)}
 .reveal-d1{transition-delay:.06s}
 .reveal-d2{transition-delay:.14s}
