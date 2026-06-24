@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOT — Gain-Only Ternary Transformer | Fakeonomics</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #2ea043;
+      --accent-dim: #1a7f37;
+      --teal: #3fb5a3;
+      --red: #f85149;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    pre, code { font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace; }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 64px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header .tagline {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .subhead {
+      color: var(--accent);
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+    section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    p { margin-bottom: 16px; color: var(--muted); }
+    p strong { color: var(--text); }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-card .value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+    .stat-card .label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .stat-card.warn .value { color: var(--teal); }
+    .generation {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 12px 0;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.9rem;
+      color: var(--teal);
+    }
+    .generation .prompt { color: var(--muted); }
+    .arch-list {
+      list-style: none;
+      margin: 16px 0;
+    }
+    .arch-list li {
+      padding: 8px 0;
+      padding-left: 20px;
+      position: relative;
+      color: var(--muted);
+    }
+    .arch-list li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-weight: 700;
+    }
+    .arch-list li strong { color: var(--text); }
+    .callout {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .callout.warn { border-left-color: var(--red); }
+    .callout.warn strong { color: var(--red); }
+    .badge {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      color: var(--muted);
+      margin: 0 4px 4px 0;
+    }
+    .badge.green { border-color: var(--accent); color: var(--accent); }
+    footer {
+      padding: 40px 0 60px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .inks {
+      margin-top: 16px;
+    }
+    .inks a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .inks a:hover { color: var(--accent); }
+    .inks span { color: var(--border); margin: 0 8px; }
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--red);
+      border: 1px solid var(--red);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 24px;
+      display: inline-block;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>GOT</h1>
+      <div class="tagline">Gain-Only Ternary Transformer &mdash; tiny weights, trained end-to-end.</div>
+      <div class="hero-note">This is early research. The technology is not production-ready.</div>
+    </header>
+
+    <section>
+      <div class="subhead">What it is</div>
+      <h2>A ternary transformer that works</h2>
+      <p>
+        GOT is a transformer where every weight is ternary: <strong>-1, 0, or +1</strong>.
+        No FP32 inference. No matrix multiplication in the traditional sense &mdash; just
+        additions and subtractions. The model is trained end-to-end with latent FP32 weights
+        and Straight-Through Estimator quantization (BitNet b1.58-style), then hardened to
+        ternary at inference.
+      </p>
+      <p>
+        At 31M parameters, GOT v3 achieves <strong>perplexity 5.0</strong> after 10 minutes
+        of training on a laptop RTX 3050 (6 GB VRAM). It generates grammatically coherent
+        English sentences. For a model that runs on ternary math, this is the starting line.
+      </p>
+      <div class="callout">
+        Part of the <strong>Fakeonomics</strong> research portfolio by Yuriy Venediktov.
+        Code is private and proprietary (All Rights Reserved). A paper is forthcoming.
+      </div>
+    </section>
+
+    <section>
+      <div class="subhead">Results</div>
+      <h2>31M parameter model</h2>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="value">31.1M</div>
+          <div class="label">Total params</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">6.5M</div>
+          <div class="label">Ternary after hardening</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">5.0</div>
+          <div class="label">Perplexity</div>
+        </div>
+        <div class="stat-card warn">
+          <div class="value">10 min</div>
+          <div class="label">Training time (RTX 3050)</div>
+        </div>
+        <div class="stat-card warn">
+          <div class="value">~1.2 MB</div>
+          <div class="label">Packed model size</div>
+        </div>
+        <div class="stat-card warn">
+          <div class="value">20M</div>
+          <div class="label">Training tokens</div>
+        </div>
+      </div>
+      <p>
+        The packed ternary weights occupy roughly <strong>1.2 MB</strong> &mdash; orders of
+        magnitude smaller than the FP32 equivalent. The model was trained on a curated mix of
+        TinyStories and Russian literature (20M tokens) using a BPE tokenizer.
+      </p>
+    </section>
+
+    <section>
+      <div class="subhead">Generation examples</div>
+      <h2>What it says</h2>
+      <p>Unconditional generations from the 31M model after 10 minutes of training:</p>
+      <div class="generation">
+        <span class="prompt">&gt;&gt;&gt;</span> Once upon a time, there was a little girl named Benpy.
+      </div>
+      <div class="generation">
+        <span class="prompt">&gt;&gt;&gt;</span> She opened the doors, Lily played the cowle buine and went on the slide.
+      </div>
+      <div class="generation">
+        <span class="prompt">&gt;&gt;&gt;</span> The sun was warm and the birds sang in the trees.
+      </div>
+      <div class="generation">
+        <span class="prompt">&gt;&gt;&gt;</span> Tom wanted to play with his friends but they were all busy.
+      </div>
+      <p>
+        The sentences are simple and contain invented words (&ldquo;cowle buine&rdquo;), but
+        they follow English grammar, maintain subject-verb agreement, and show narrative
+        structure. For a model trained for 10 minutes with ternary weights, this is genuine
+        signal &mdash; not a statistical fluke.
+      </p>
+    </section>
+
+    <section>
+      <div class="subhead">Architecture</div>
+      <h2>How it works (briefly)</h2>
+      <ul class="arch-list">
+        <li><strong>BitLinear</strong> &mdash; latent FP32 weights with absmean STE quantization to ternary. Per-channel FP16 scale.</li>
+        <li><strong>SubLN</strong> &mdash; sublayer normalization (double LayerNorm: pre-attention + pre-FFN).</li>
+        <li><strong>ReLU&sup2;</strong> &mdash; squared ReLU activation in the feed-forward network.</li>
+        <li><strong>GQA + RoPE</strong> &mdash; Grouped Query Attention with Rotary Position Embeddings.</li>
+        <li><strong>Tied embeddings</strong> &mdash; shared input/output embedding matrix (FP32).</li>
+      </ul>
+      <p>
+        The model follows the BitNet b1.58 paradigm: train in FP32 with quantization-aware
+        training, then export to packed ternary for inference. No bias terms. No FP32 math
+        at deployment.
+      </p>
+      <div class="callout">
+        This approach is distinct from earlier GOT versions (v1/v2) that used frozen random
+        ternary weights. GOT v3 trains <em>all</em> weights in the latent space, then
+        quantizes after training &mdash; achieving dramatically better results.
+      </div>
+    </section>
+
+    <section>
+      <div class="subhead">Limitations</div>
+      <h2>What's still broken</h2>
+      <div class="callout warn">
+        <strong>Honest assessment.</strong> This is early-stage research. Many things are not
+        there yet.
+      </div>
+      <ul class="arch-list">
+        <li><strong>Small scale.</strong> 31M and 64M models. Not comparable to billion-parameter LMs.</li>
+        <li><strong>Limited vocabulary.</strong> The BPE tokenizer was trained on a small corpus. Coherency degrades outside seen domains.</li>
+        <li><strong>No hardware deployment.</strong> The model runs in Python. No C codegen, no MCU port, no accelerator backend yet.</li>
+        <li><strong>No benchmark suite.</strong> Evaluated on loss/perplexity, not downstream tasks (MMLU, HellaSwag, etc.).</li>
+        <li><strong>Training data.</strong> Curated mix, not a large-scale web corpus.</li>
+        <li><strong>Model can hallucinate</strong> and invent words freely (the &ldquo;cowle buine&rdquo; problem).</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="subhead">Timeline</div>
+      <h2>12 days from zero to working model</h2>
+      <p>
+        GOT was built from scratch in under two weeks. The trajectory: frozen random ternary
+        (v1, day 1), scale-only training (v2, day 3), BitNet-style retthink (v3, day 7),
+        working text generation (day 10), 64M model training (day 12+).
+        Every iteration uncovered something that didn't work.
+      </p>
+      <p>
+        The v3 breakthrough (perplexity 5.0) was that <em>training all weights in latent
+        FP32 with STE quantization</em> works, while <em>frozen random ternary</em> does not.
+        This is the central lesson.
+      </p>
+    </section>
+
+    <section>
+      <div class="subhead">Status</div>
+      <h2>What's next</h2>
+      <p>
+        <strong>GOT v3 (64M)</strong> is currently training on 82M tokens. Results expected
+        within days. Beyond that, the roadmap includes: proper evaluation on standard
+        benchmarks, C codegen for Cortex-M class MCUs, domain-layer fine-tuning (GOT-DL),
+        and eventually a MatMul-Free recurrent variant (GOT-MF).
+      </p>
+      <p>
+        The code is <strong>private and proprietary</strong> (All Rights Reserved).
+        A research paper will be published on Zenodo once complete. This landing page is a
+        preview of the work so far.
+      </p>
+      <div class="inks">
+        <span class="badge">DOI pending</span>
+        <span class="badge green">All Rights Reserved</span>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        GOT &mdash; Gain-Only Ternary Transformer<br>
+        Fakeonomics &copy; 2026 &middot; Yuriy Venediktov &middot; All Rights Reserved
+      </p>
+      <p style="margin-top: 8px;">
+        <a href="https://fakeonomics.github.io/TernML-overview/">TernML</a>
+        <span>|</span>
+        <a href="https://fakeonomics.github.io/TernaT-overview/">TernaT</a>
+        <span>|</span>
+        <a href="https://github.com/Fakeonomics">GitHub</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
