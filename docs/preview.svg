@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <radialGradient id="glow" cx="50%" cy="45%" r="35%">
-      <stop offset="0%" stop-color="#c9954a" stop-opacity=".12"/>
-      <stop offset="50%" stop-color="#c9954a" stop-opacity=".04"/>
-      <stop offset="100%" stop-color="#c9954a" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity=".12"/>
+      <stop offset="50%" stop-color="#f43f5e" stop-opacity=".04"/>
+      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glow2" cx="50%" cy="45%" r="20%">
-      <stop offset="0%" stop-color="#c9954a" stop-opacity=".06"/>
-      <stop offset="100%" stop-color="#c9954a" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity=".06"/>
+      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -15,12 +15,12 @@
   <rect width="1200" height="630" fill="url(#glow)"/>
   <rect width="1200" height="630" fill="url(#glow2)"/>
 
-  <line x1="200" y1="315" x2="1000" y2="315" stroke="#c9954a" stroke-opacity=".08" stroke-width="1"/>
+  <line x1="200" y1="315" x2="1000" y2="315" stroke="#f43f5e" stroke-opacity=".08" stroke-width="1"/>
 
-  <text x="600" y="260" text-anchor="middle" fill="#c9954a" font-family="Georgia,'Times New Roman',serif" font-size="52" font-weight="400" letter-spacing="1">GOT</text>
-  <text x="600" y="320" text-anchor="middle" fill="#e2c278" font-family="'Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="300" letter-spacing="3">GAIN-ONLY TERNARY TRANSFORMER</text>
+  <text x="600" y="260" text-anchor="middle" fill="#f43f5e" font-family="Georgia,'Times New Roman',serif" font-size="52" font-weight="400" font-style="italic" letter-spacing="1">TernY</text>
+  <text x="600" y="320" text-anchor="middle" fill="#fb7185" font-family="'Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="300" letter-spacing="3">TERNARY TRANSFORMER BY YURIY</text>
 
-  <line x1="540" y1="350" x2="660" y2="350" stroke="#c9954a" stroke-opacity=".25" stroke-width="1"/>
+  <line x1="540" y1="350" x2="660" y2="350" stroke="#f43f5e" stroke-opacity=".25" stroke-width="1"/>
 
   <text x="600" y="400" text-anchor="middle" fill="#a89e92" font-family="'Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="400" letter-spacing="4">RESEARCH · EXPERIMENTAL</text>
 </svg>

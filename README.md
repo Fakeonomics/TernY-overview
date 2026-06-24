@@ -26,7 +26,7 @@ Generates grammatically coherent English sentences. 37× better perplexity than 
 - **BitLinear** — latent FP32 weights with absmean STE quantization, per-channel FP16 scale
 - **SubLN** — sublayer normalization (double LayerNorm: pre-attention + pre-FFN)
 - **ReLU²** — squared ReLU activation in FFN
-- **GQA + RoPE** — Grouped Query Attention (8Q/4KV) with Rotary Position Embeddings
+- **GQA + RoPE** — Grouped Query Attention (6Q/3KV) with Rotary Position Embeddings
 - **Tied embeddings** — shared FP32 input/output matrix
 - **No bias terms** — clean, lean decoder-only design
 
