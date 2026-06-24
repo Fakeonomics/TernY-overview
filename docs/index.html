@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GOT — Gain-Only Ternary Transformer | Fakeonomics</title>
+  <title>TernY — Ternary Transformer by Yuriy | Fakeonomics</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -178,8 +178,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>GOT</h1>
-      <div class="tagline">Gain-Only Ternary Transformer &mdash; tiny weights, trained end-to-end.</div>
+      <h1>TernY</h1>
+      <div class="tagline">Ternary Transformer by Yuriy &mdash; tiny weights, trained end-to-end.</div>
       <div class="hero-note">This is early research. The technology is not production-ready.</div>
     </header>
 
@@ -187,14 +187,14 @@
       <div class="subhead">What it is</div>
       <h2>A ternary transformer that works</h2>
       <p>
-        GOT is a transformer where every weight is ternary: <strong>-1, 0, or +1</strong>.
+        TernY is a transformer where every weight is ternary: <strong>-1, 0, or +1</strong>.
         No FP32 inference. No matrix multiplication in the traditional sense &mdash; just
         additions and subtractions. The model is trained end-to-end with latent FP32 weights
         and Straight-Through Estimator quantization (BitNet b1.58-style), then hardened to
         ternary at inference.
       </p>
       <p>
-        At 31M parameters, GOT v3 achieves <strong>perplexity 5.0</strong> after 10 minutes
+        At 31M parameters, TernY v3 achieves <strong>perplexity 5.0</strong> after 10 minutes
         of training on a laptop RTX 3050 (6 GB VRAM). It generates grammatically coherent
         English sentences. For a model that runs on ternary math, this is the starting line.
       </p>
@@ -280,8 +280,8 @@
         at deployment.
       </p>
       <div class="callout">
-        This approach is distinct from earlier GOT versions (v1/v2) that used frozen random
-        ternary weights. GOT v3 trains <em>all</em> weights in the latent space, then
+        This approach is distinct from earlier TernY versions (v1/v2) that used frozen random
+        ternary weights. TernY v3 trains <em>all</em> weights in the latent space, then
         quantizes after training &mdash; achieving dramatically better results.
       </div>
     </section>
@@ -307,7 +307,7 @@
       <div class="subhead">Timeline</div>
       <h2>12 days from zero to working model</h2>
       <p>
-        GOT was built from scratch in under two weeks. The trajectory: frozen random ternary
+        TernY was built from scratch in under two weeks. The trajectory: frozen random ternary
         (v1, day 1), scale-only training (v2, day 3), BitNet-style retthink (v3, day 7),
         working text generation (day 10), 64M model training (day 12+).
         Every iteration uncovered something that didn't work.
@@ -323,10 +323,10 @@
       <div class="subhead">Status</div>
       <h2>What's next</h2>
       <p>
-        <strong>GOT v3 (64M)</strong> is currently training on 82M tokens. Results expected
+        <strong>TernY v3 (64M)</strong> is currently training on 82M tokens. Results expected
         within days. Beyond that, the roadmap includes: proper evaluation on standard
-        benchmarks, C codegen for Cortex-M class MCUs, domain-layer fine-tuning (GOT-DL),
-        and eventually a MatMul-Free recurrent variant (GOT-MF).
+        benchmarks, C codegen for Cortex-M class MCUs, domain-layer fine-tuning (TernY-DL),
+        and eventually a MatMul-Free recurrent variant (TernY-MF).
       </p>
       <p>
         The code is <strong>private and proprietary</strong> (All Rights Reserved).
@@ -341,7 +341,7 @@
 
     <footer>
       <p>
-        GOT &mdash; Gain-Only Ternary Transformer<br>
+        TernY &mdash; Ternary Transformer by Yuriy<br>
         Fakeonomics &copy; 2026 &middot; Yuriy Venediktov &middot; All Rights Reserved
       </p>
       <p style="margin-top: 8px;">

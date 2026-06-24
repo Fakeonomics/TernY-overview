@@ -1,9 +1,9 @@
-# GOT — Gain-Only Ternary Transformer
+# TernY — Ternary Transformer by Yuriy
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 ![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)
 
-**Live site:** https://fakeonomics.github.io/GOT-overview/
+**Live site:** https://fakeonomics.github.io/TernY-overview/
 
 A ternary transformer where every weight is {-1, 0, +1}. No FP32 inference — just additions and subtractions. Trained end-to-end with latent FP32 weights and Straight-Through Estimator quantization (BitNet b1.58-style).
 
@@ -11,7 +11,7 @@ Part of the **Fakeonomics** research portfolio by Yuriy Venediktov.
 
 ---
 
-## Results (GOT v3, 31M)
+## Results (TernY v3, 31M)
 
 | Metric | Value |
 |--------|-------|
@@ -42,7 +42,7 @@ Generates simple English sentences after 10 minutes of training.
 
 ## Status
 
-- GOT v3 (64M) currently training on 82M tokens.
+- TernY v3 (64M) currently training on 82M tokens.
 - Code is **private and proprietary** (All Rights Reserved).
 - Research paper coming soon on Zenodo.
 - This repo is a public landing page only — no source code.
