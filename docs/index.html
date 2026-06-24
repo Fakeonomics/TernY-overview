@@ -75,7 +75,7 @@ section[id]{scroll-margin-top:70px}
 .section-header{margin-bottom:48px}
 .section-label{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
 .section-label::before{content:'';width:20px;height:1.5px;background:var(--accent)}
-.section-title{font-size:clamp(26px,3.8vw,44px);font-weight:700;letter-spacing:-.025em;margin-bottom:12px;line-height:1.12;color:var(--text)}
+.section-title{font-size:clamp(28px,4.5vw,56px);font-weight:700;letter-spacing:-.025em;margin-bottom:12px;line-height:1.12;color:var(--text)}
 .section-subtitle{font-size:17px;color:var(--text-dim);max-width:520px;line-height:1.6;font-weight:400}
 .reveal{transform:perspective(800px) rotateX(4deg) translateY(30px);opacity:0;transition:transform 1.2s cubic-bezier(.77,0,.175,1),opacity .8s ease;will-change:transform}
 .reveal.visible{transform:perspective(800px) rotateX(0) translateY(0);opacity:1}
@@ -109,12 +109,11 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .hero-bg .overlay{position:absolute;inset:0;background:var(--gradient-hero)}
-.hero-bg .grain{position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
-.hero-glow{position:absolute;top:45%;left:50%;width:700px;height:700px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(244,63,94,.06) 0%,transparent 60%);pointer-events:none;z-index:1;animation:breathe 4s ease-in-out infinite}
+.hero-bg .grain{position:absolute;inset:0;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
 .hero .container{position:relative;z-index:2;text-align:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:4px;border:1px solid var(--border);font-size:12.5px;color:var(--text-dim);margin-bottom:32px;font-weight:500;letter-spacing:.01em;backdrop-filter:blur(4px);background:rgba(12,11,9,.3)}
 .hero-badge span{color:var(--accent);font-weight:600}
-.hero h1{font-family:var(--font-serif);font-size:clamp(40px,7vw,82px);font-weight:400;font-style:italic;letter-spacing:-.03em;line-height:1.05;margin-bottom:20px;color:var(--text)}
+.hero h1{font-family:var(--font-serif);font-size:clamp(40px,7vw,88px);font-weight:400;font-style:italic;letter-spacing:-.03em;line-height:1.05;margin-bottom:20px;color:var(--text)}
 .hero h1 .accent-text{color:var(--accent);font-style:italic}
 .hero .sub{font-size:clamp(16px,1.8vw,19px);color:var(--text-dim);max-width:600px;line-height:1.7;margin:0 auto 36px;letter-spacing:-.005em}
 .hero .sub strong{color:var(--text);font-weight:600}
@@ -256,7 +255,7 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 @media(prefers-reduced-motion:reduce){
   .reveal,.reveal-alt,.reveal-rotate,.reveal.visible,.reveal-alt.visible,.reveal-rotate.visible{transform:none!important;opacity:1!important;transition:none!important}
   .title-reveal,.title-reveal.visible{color:var(--text)!important;transition:none!important}
-  .hero-glow,.hero-bg .grain{animation:none!important}
+  .hero-bg .grain{animation:none!important}
   #hero-canvas{display:none!important}
   #scroll-progress{display:none!important}
 }
@@ -281,11 +280,40 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 .roadmap-card .rm-status.active{background:rgba(244,63,94,.12);color:var(--accent)}
 .roadmap-card .rm-status.pending{background:rgba(255,255,255,.04);color:var(--text-dimmer)}
 .roadmap-card .rm-status.done{background:rgba(245,158,11,.12);color:var(--amber)}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 10% 20%,rgba(244,63,94,.05) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 90% 70%,rgba(168,85,247,.03) 0%,transparent 50%),radial-gradient(ellipse 100% 40% at 50% 80%,rgba(244,63,94,.02) 0%,transparent 50%)}
+.ambient-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.ambient-bg .orb{position:absolute;border-radius:50%;filter:blur(100px);animation:float 20s ease-in-out infinite;will-change:transform}
+@keyframes float{0%,100%{transform:translate(0,0)scale(1)}33%{transform:translate(40px,-30px)scale(1.08)}66%{transform:translate(-30px,20px)scale(0.95)}}
+.lang-btn{background:none;border:1px solid var(--border);color:var(--accent);font-size:12px;font-weight:600;padding:5px 11px;border-radius:4px;cursor:pointer;transition:border-color .3s,color .3s,background .3s;font-family:var(--font-ui);letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.lang-btn:hover{border-color:var(--accent);background:rgba(244,63,94,.08)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(244,63,94,.2);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(244,63,94,.35)}
+.section::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(244,63,94,.15),transparent)}
+.section:last-child::after{display:none}
+.metric-card,.how-card,.paper-card,.bench-wrap,.cta-block,.roadmap-card{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.metric-card{background:rgba(255,255,255,.03)}
+.metric-card:hover{background:rgba(244,63,94,.06)!important;border-color:rgba(244,63,94,.12)!important}
+.how-card{background:rgba(255,255,255,.03)}
+.how-card:hover{background:rgba(244,63,94,.06)!important;border-color:rgba(244,63,94,.12)!important}
+.paper-card{background:rgba(255,255,255,.03)}
+.paper-card:hover{background:rgba(244,63,94,.06)!important;border-color:rgba(244,63,94,.12)!important}
+.roadmap-card{background:rgba(255,255,255,.03)}
+.roadmap-card:hover{background:rgba(244,63,94,.06)!important;border-color:rgba(244,63,94,.12)!important}
+.bench-wrap{background:rgba(255,255,255,.02)}
+.cta-block{background:rgba(255,255,255,.03)}
 </style>
 </head>
 <body>
 
-<a href="#hero" class="skip-link">Skip to content</a>
+<div class="ambient-bg">
+  <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,rgba(244,63,94,.06) 0%,transparent 70%);top:-15%;left:-10%;animation-delay:0s"></div>
+  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(168,85,247,.03) 0%,transparent 70%);bottom:-10%;right:-5%;animation-delay:-8s"></div>
+  <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(251,113,133,.03) 0%,transparent 70%);top:40%;right:15%;animation-delay:-15s"></div>
+</div>
+
+<a href="#hero" class="skip-link" data-i18n="skipLink">Skip to content</a>
 <div id="scroll-progress"></div>
 
 <nav id="navbar">
@@ -302,14 +330,15 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <ul class="nav-links">
-      <li><a href="#metrics">Metrics</a></li>
-      <li><a href="#architecture">Architecture</a></li>
-      <li><a href="#results">Results</a></li>
-      <li><a href="#comparison">Comparison</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#papers">Papers</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+      <li><a href="#metrics" data-i18n="nav.metrics">Metrics</a></li>
+      <li><a href="#architecture" data-i18n="nav.architecture">Architecture</a></li>
+      <li><a href="#results" data-i18n="nav.results">Results</a></li>
+      <li><a href="#comparison" data-i18n="nav.comparison">Comparison</a></li>
+      <li><a href="#timeline" data-i18n="nav.timeline">Timeline</a></li>
+      <li><a href="#papers" data-i18n="nav.papers">Papers</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Get in Touch</a></li>
+      <li><button class="lang-btn" id="langToggle" data-i18n="lang.btn">EN</button></li>
     </ul>
   </div>
 </nav>
@@ -367,22 +396,21 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
     <div class="grain"></div>
     <canvas id="hero-canvas"></canvas>
   </div>
-  <div class="hero-glow"></div>
   <div class="container">
     <div class="reveal visible">
-      <div class="hero-badge">v3.0 &middot; <span>Ternary Transformer by Yuriy</span></div>
+      <div class="hero-badge" data-i18n="hero.badge">v3.0 &middot; <span>Ternary Transformer by Yuriy</span></div>
     </div>
-    <h1 class="reveal visible reveal-d1">The <span class="accent-text">ternary</span><br>transformer.</h1>
-    <p class="sub reveal visible reveal-d2">BitNet-style ternary LLM. Latent FP32 + STE absmean quantization. 31M params, <strong>perplexity 5.0</strong> in 10 minutes on a laptop GPU. 1.2 MB packed.</p>
+    <h1 class="reveal visible reveal-d1" data-i18n="hero.title">The <span class="accent-text">ternary</span><br>transformer.</h1>
+    <p class="sub reveal visible reveal-d2" data-i18n="hero.sub">BitNet-style ternary LLM. Latent FP32 + STE absmean quantization. 31M params, <strong>perplexity 5.0</strong> in 10 minutes on a laptop GPU. 1.2 MB packed.</p>
     <div class="hero-buttons reveal visible reveal-d3">
-      <a href="#contact" class="btn btn-primary">Get in Touch <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a href="https://doi.org/10.5281/zenodo.20725229" target="_blank" rel="noopener" class="btn btn-secondary">Concept DOI</a>
+      <a href="#contact" class="btn btn-primary"><span data-i18n="hero.ctaPrimary">Get in Touch</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="https://doi.org/10.5281/zenodo.20725229" target="_blank" rel="noopener" class="btn btn-secondary" data-i18n="hero.ctaSecondary">Concept DOI</a>
     </div>
     <div class="hero-stats reveal visible reveal-d4">
-      <div class="hero-stat"><div class="hero-stat-value"><span class="num-spec">31.1M</span></div><div class="hero-stat-label">Parameters</div></div>
-      <div class="hero-stat"><div class="hero-stat-value"><span class="num-spec">5.0</span></div><div class="hero-stat-label">Perplexity</div></div>
-      <div class="hero-stat"><div class="hero-stat-value"><span class="num-spec">1.2 MB</span></div><div class="hero-stat-label">Packed Size</div></div>
-      <div class="hero-stat"><div class="hero-stat-value"><span class="num-spec">10 min</span></div><div class="hero-stat-label">Training Time</div></div>
+      <div class="hero-stat"><div class="hero-stat-value"><span class="num-spec">31.1M</span></div><div class="hero-stat-label" data-i18n="hero.stat1">Parameters</div></div>
+      <div class="hero-stat"><div class="hero-stat-value"><span class="num-spec">5.0</span></div><div class="hero-stat-label" data-i18n="hero.stat2">Perplexity</div></div>
+      <div class="hero-stat"><div class="hero-stat-value"><span class="num-spec">1.2 MB</span></div><div class="hero-stat-label" data-i18n="hero.stat3">Packed Size</div></div>
+      <div class="hero-stat"><div class="hero-stat-value"><span class="num-spec">10 min</span></div><div class="hero-stat-label" data-i18n="hero.stat4">Training Time</div></div>
     </div>
   </div>
 </section>
@@ -390,35 +418,35 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 <section class="section" id="metrics">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Key Metrics</div>
-      <h2 class="section-title title-reveal">A transformer<br>that computes in additions.</h2>
-      <p class="section-subtitle">TernY trains all weights in latent FP32 with STE quantization, then hardens to ternary for inference. No FP32 math at deployment — just add and subtract.</p>
+      <div class="section-label" data-i18n="metrics.label">Key Metrics</div>
+      <h2 class="section-title title-reveal" data-i18n="metrics.title">A transformer<br>that computes in additions.</h2>
+      <p class="section-subtitle" data-i18n="metrics.sub">TernY trains all weights in latent FP32 with STE quantization, then hardens to ternary for inference. No FP32 math at deployment — just add and subtract.</p>
     </div>
     <div class="metrics-grid">
       <div class="metric-card reveal reveal-d1" data-tilt>
         <div class="metric-value">31.1M</div>
-        <div class="metric-label">Total Parameters</div>
-        <div class="metric-desc">Full model size before packing. 100% trainable.</div>
+        <div class="metric-label" data-i18n="metrics.card1.label">Total Parameters</div>
+        <div class="metric-desc" data-i18n="metrics.card1.desc">Full model size before packing. 100% trainable.</div>
       </div>
       <div class="metric-card reveal reveal-d2" data-tilt>
         <div class="metric-value">5.0</div>
-        <div class="metric-label">Perplexity</div>
-        <div class="metric-desc">After 10 min on RTX 3050 6 GB</div>
+        <div class="metric-label" data-i18n="metrics.card2.label">Perplexity</div>
+        <div class="metric-desc" data-i18n="metrics.card2.desc">After 10 min on RTX 3050 6 GB</div>
       </div>
       <div class="metric-card reveal reveal-d3" data-tilt>
         <div class="metric-value">1.2 MB</div>
-        <div class="metric-label">Packed Size</div>
-        <div class="metric-desc">Ternary weights after hardening</div>
+        <div class="metric-label" data-i18n="metrics.card3.label">Packed Size</div>
+        <div class="metric-desc" data-i18n="metrics.card3.desc">Ternary weights after hardening</div>
       </div>
       <div class="metric-card reveal reveal-d2" data-tilt>
         <div class="metric-value">d=384</div>
-        <div class="metric-label">Model Dimension</div>
-        <div class="metric-desc">L=4, heads=6, KV=3, d_ff=1536</div>
+        <div class="metric-label" data-i18n="metrics.card4.label">Model Dimension</div>
+        <div class="metric-desc" data-i18n="metrics.card4.desc">L=4, heads=6, KV=3, d_ff=1536</div>
       </div>
       <div class="metric-card reveal reveal-d3" data-tilt>
         <div class="metric-value">82M</div>
-        <div class="metric-label">Training Tokens</div>
-        <div class="metric-desc">TinyStories + ru-classic corpus</div>
+        <div class="metric-label" data-i18n="metrics.card5.label">Training Tokens</div>
+        <div class="metric-desc" data-i18n="metrics.card5.desc">TinyStories + ru-classic corpus</div>
       </div>
     </div>
   </div>
@@ -427,28 +455,28 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 <section class="section" id="architecture">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Architecture</div>
-      <h2 class="section-title title-reveal">BitNet b1.58<br>reimagined.</h2>
-      <p class="section-subtitle">TernY follows the BitNet b1.58 paradigm with key innovations: SubLN normalization, ReLU² activation, and per-channel FP16 scales.</p>
+      <div class="section-label" data-i18n="arch.label">Architecture</div>
+      <h2 class="section-title title-reveal" data-i18n="arch.title">BitNet b1.58<br>reimagined.</h2>
+      <p class="section-subtitle" data-i18n="arch.sub">TernY follows the BitNet b1.58 paradigm with key innovations: SubLN normalization, ReLU² activation, and per-channel FP16 scales.</p>
     </div>
     <div class="how-grid">
       <div class="how-card reveal-rotate reveal-d1" data-tilt>
         <div class="how-num">01</div>
-        <h3>BitLinear</h3>
-        <p>Latent FP32 weights with absmean STE quantization to ternary {-1,0,+1}. Per-channel FP16 scale absorbs magnitude. No multiplications — just sign flips and zero-skips.</p>
-        <span class="tag">STE absmean &middot; Per-channel scale</span>
+        <h3 data-i18n="arch.card1.title">BitLinear</h3>
+        <p data-i18n="arch.card1.desc">Latent FP32 weights with absmean STE quantization to ternary {-1,0,+1}. Per-channel FP16 scale absorbs magnitude. No multiplications — just sign flips and zero-skips.</p>
+        <span class="tag" data-i18n="arch.card1.tag">STE absmean &middot; Per-channel scale</span>
       </div>
       <div class="how-card reveal-rotate reveal-d2" data-tilt>
         <div class="how-num">02</div>
-        <h3>SubLN + ReLU&sup2;</h3>
-        <p>Double LayerNorm (pre-attention + pre-FFN). Squared ReLU activation removes negative values entirely — natural fit for ternary computation.</p>
-        <span class="tag">SubLN &middot; ReLU&sup2;</span>
+        <h3 data-i18n="arch.card2.title">SubLN + ReLU&sup2;</h3>
+        <p data-i18n="arch.card2.desc">Double LayerNorm (pre-attention + pre-FFN). Squared ReLU activation removes negative values entirely — natural fit for ternary computation.</p>
+        <span class="tag" data-i18n="arch.card2.tag">SubLN &middot; ReLU&sup2;</span>
       </div>
       <div class="how-card reveal-rotate reveal-d3" data-tilt>
         <div class="how-num">03</div>
-        <h3>GQA + RoPE</h3>
-        <p>Grouped Query Attention (8Q/4KV) with Rotary Position Embeddings. Tied embedding matrix (FP32). No bias terms. Clean, lean decoder-only.</p>
-        <span class="tag">8Q/4KV &middot; RoPE &middot; Tied embeddings</span>
+        <h3 data-i18n="arch.card3.title">GQA + RoPE</h3>
+        <p data-i18n="arch.card3.desc">Grouped Query Attention (8Q/4KV) with Rotary Position Embeddings. Tied embedding matrix (FP32). No bias terms. Clean, lean decoder-only.</p>
+        <span class="tag" data-i18n="arch.card3.tag">8Q/4KV &middot; RoPE &middot; Tied embeddings</span>
       </div>
     </div>
   </div>
@@ -457,9 +485,9 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 <section class="section" id="results">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Results</div>
-      <h2 class="section-title title-reveal">It speaks<br>(mostly) English.</h2>
-      <p class="section-subtitle">Unconditional generations from the 31M model after 10 minutes of training on a laptop RTX 3050.</p>
+      <div class="section-label" data-i18n="results.label">Results</div>
+      <h2 class="section-title title-reveal" data-i18n="results.title">It speaks<br>(mostly) English.</h2>
+      <p class="section-subtitle" data-i18n="results.sub">Unconditional generations from the 31M model after 10 minutes of training on a laptop RTX 3050.</p>
     </div>
     <div class="reveal">
       <div class="gen-block">
@@ -478,75 +506,75 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
         <span class="prompt">&gt;&gt;&gt;</span> Once upon a time there was a little boy named Max. He liked to play with his dog.
       </div>
     </div>
-    <div class="bench-note reveal">* Sentences follow English grammar with subject-verb agreement and narrative structure. Invented words ("cowle buine") confirm the model learns syntax before vocabulary — a known property of small transformers.</div>
+    <div class="bench-note reveal" data-i18n="results.note">* Sentences follow English grammar with subject-verb agreement and narrative structure. Invented words confirm the model learns syntax before vocabulary.</div>
   </div>
 </section>
 
 <section class="section" id="comparison">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Comparison</div>
-      <h2 class="section-title title-reveal">GOT vs TernY<br>Two approaches.</h2>
-      <p class="section-subtitle">Head-to-head comparison between the frozen random ternary approach (GOT v2) and the BitNet-style trained approach (TernY v3).</p>
+      <div class="section-label" data-i18n="comp.label">Comparison</div>
+      <h2 class="section-title title-reveal" data-i18n="comp.title">GOT vs TernY<br>Two approaches.</h2>
+      <p class="section-subtitle" data-i18n="comp.sub">Head-to-head comparison between the frozen random ternary approach (GOT v2) and the BitNet-style trained approach (TernY v3).</p>
     </div>
     <div class="bench-wrap reveal">
       <table>
         <thead>
           <tr>
-            <th>Metric</th>
-            <th class="highlight-col">TernY v3 (BitNet)</th>
-            <th>GOT v2 (Frozen)</th>
+            <th data-i18n="comp.table.th1">Metric</th>
+            <th class="highlight-col" data-i18n="comp.table.th2">TernY v3 (BitNet)</th>
+            <th data-i18n="comp.table.th3">GOT v2 (Frozen)</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Approach</td><td class="highlight">Train all weights</td><td class="cross">97% frozen random</td></tr>
-          <tr><td>Trainable params</td><td class="highlight">31.1M (100%)</td><td class="cross">83K (2.3%)</td></tr>
-          <tr><td>Perplexity</td><td class="highlight">5.0</td><td class="cross">~28</td></tr>
-          <tr><td>Loss (2K steps)</td><td class="highlight">1.61</td><td class="cross">6.90</td></tr>
-          <tr><td>Training time</td><td class="highlight">10 min</td><td>-</td></tr>
-          <tr><td>Packed size</td><td class="highlight">1.2 MB</td><td class="highlight">1.1 MB</td></tr>
-          <tr><td>Text generation</td><td><span class="check-badge">&#10003; Coherent</span></td><td class="cross">None</td></tr>
-          <tr><td>Scaling laws</td><td class="highlight">Work</td><td><span class="cross-badge">&#10007; Plateau</span></td></tr>
-          <tr><td>Domain layer (DL)</td><td><span class="check-badge">&#10003; Confirmed</span></td><td><span class="check-badge">&#10003; Confirmed</span></td></tr>
+          <tr><td data-i18n="comp.row1">Approach</td><td class="highlight" data-i18n="comp.row1v2">Train all weights</td><td class="cross" data-i18n="comp.row1v3">97% frozen random</td></tr>
+          <tr><td data-i18n="comp.row2">Trainable params</td><td class="highlight" data-i18n="comp.row2v2">31.1M (100%)</td><td class="cross" data-i18n="comp.row2v3">83K (2.3%)</td></tr>
+          <tr><td data-i18n="comp.row3">Perplexity</td><td class="highlight">5.0</td><td class="cross">~28</td></tr>
+          <tr><td data-i18n="comp.row4">Loss (2K steps)</td><td class="highlight">1.61</td><td class="cross">6.90</td></tr>
+          <tr><td data-i18n="comp.row5">Training time</td><td class="highlight">10 min</td><td>-</td></tr>
+          <tr><td data-i18n="comp.row6">Packed size</td><td class="highlight">1.2 MB</td><td class="highlight">1.1 MB</td></tr>
+          <tr><td data-i18n="comp.row7">Text generation</td><td><span class="check-badge">&#10003; <span data-i18n="comp.row7v2">Coherent</span></span></td><td class="cross" data-i18n="comp.row7v3">None</td></tr>
+          <tr><td data-i18n="comp.row8">Scaling laws</td><td class="highlight" data-i18n="comp.row8v2">Work</td><td><span class="cross-badge">&#10007; <span data-i18n="comp.row8v3">Plateau</span></span></td></tr>
+          <tr><td data-i18n="comp.row9">Domain layer (DL)</td><td><span class="check-badge">&#10003; <span data-i18n="comp.row9v2">Confirmed</span></span></td><td><span class="check-badge">&#10003; <span data-i18n="comp.row9v3">Confirmed</span></span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="bench-note reveal">* TernY v3 trains all weights in latent FP32 with STE quantization — 37&times; better perplexity than GOT v2's frozen random approach. The insight: frozen ternary + per-neuron scale cannot escape the loss plateau. BitNet-style training unlocks true language generation.</p>
+    <p class="bench-note reveal" data-i18n="comp.note">* TernY v3 trains all weights in latent FP32 with STE quantization. The insight: frozen ternary + per-neuron scale cannot escape the loss plateau. BitNet-style training unlocks true language generation.</p>
   </div>
 </section>
 
 <section class="section" id="timeline">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Timeline</div>
-      <h2 class="section-title title-reveal">12 days<br>from zero to text.</h2>
-      <p class="section-subtitle">TernY was built from scratch in under two weeks. Every iteration uncovered something that didn't work — and one thing that did.</p>
+      <div class="section-label" data-i18n="timeline.label">Timeline</div>
+      <h2 class="section-title title-reveal" data-i18n="timeline.title">12 days<br>from zero to text.</h2>
+      <p class="section-subtitle" data-i18n="timeline.sub">TernY was built from scratch in under two weeks. Every iteration uncovered something that didn't work — and one thing that did.</p>
     </div>
     <div class="timeline-wrap reveal">
       <div class="timeline-item">
         <div class="day">Day 1</div>
-        <h4>GOT v1 — Frozen random ternary</h4>
-        <p>97% weights random and frozen. Only per-neuron int8 scale trains. 3.6M params, loss 5.28&rarr;2.40. Works on curve fitting, not on language.</p>
+        <h4 data-i18n="timeline.day1.title">GOT v1 — Frozen random ternary</h4>
+        <p data-i18n="timeline.day1.desc">97% weights random and frozen. Only per-neuron int8 scale trains. 3.6M params, loss 5.28&rarr;2.40. Works on curve fitting, not on language.</p>
       </div>
       <div class="timeline-item">
         <div class="day">Day 3</div>
-        <h4>GOT v2 — Scale-only breakthrough</h4>
-        <p>14M params, BPE 32k tokenizer. Loss 4063&rarr;823. But perplexity plateaus at ~28 — frozen ternary hits a fundamental ceiling.</p>
+        <h4 data-i18n="timeline.day2.title">GOT v2 — Scale-only breakthrough</h4>
+        <p data-i18n="timeline.day2.desc">14M params, BPE 32k tokenizer. Loss 4063&rarr;823. But perplexity plateaus at ~28 — frozen ternary hits a fundamental ceiling.</p>
       </div>
       <div class="timeline-item">
         <div class="day">Day 7</div>
-        <h4>Complete rethink — BitNet-style TernY</h4>
-        <p>Abandon frozen random. Train all weights in latent FP32, use absmean STE quantization, per-channel FP16 scale, SubLN, ReLU&sup2;. Architecture reset.</p>
+        <h4 data-i18n="timeline.day3.title">Complete rethink — BitNet-style TernY</h4>
+        <p data-i18n="timeline.day3.desc">Abandon frozen random. Train all weights in latent FP32, use absmean STE quantization, per-channel FP16 scale, SubLN, ReLU&sup2;. Architecture reset.</p>
       </div>
       <div class="timeline-item">
         <div class="day">Day 10</div>
-        <h4>First working text generation</h4>
-        <p>31M model achieves perplexity 5.0 in 10 minutes on RTX 3050. Generates grammatically correct English. The approach is validated.</p>
+        <h4 data-i18n="timeline.day4.title">First working text generation</h4>
+        <p data-i18n="timeline.day4.desc">31M model achieves perplexity 5.0 in 10 minutes on RTX 3050. Generates grammatically correct English. The approach is validated.</p>
       </div>
       <div class="timeline-item">
         <div class="day">Day 12+</div>
-        <h4>Scaling up — 64M model training</h4>
-        <p>63.6M params (d=768, L=6, 8Q/4KV). Training on 82M tokens. Expected ~2 hours on RTX 3050. Scaling laws confirmed.</p>
+        <h4 data-i18n="timeline.day5.title">Scaling up — 64M model training</h4>
+        <p data-i18n="timeline.day5.desc">63.6M params (d=768, L=6, 8Q/4KV). Training on 82M tokens. Expected ~2 hours on RTX 3050. Scaling laws confirmed.</p>
       </div>
     </div>
   </div>
@@ -555,34 +583,34 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 <section class="section" id="roadmap">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Roadmap</div>
-      <h2 class="section-title title-reveal">What's next<br>for TernY.</h2>
-      <p class="section-subtitle">From research prototype to practical deployment. The path forward is clear.</p>
+      <div class="section-label" data-i18n="roadmap.label">Roadmap</div>
+      <h2 class="section-title title-reveal" data-i18n="roadmap.title">What's next<br>for TernY.</h2>
+      <p class="section-subtitle" data-i18n="roadmap.sub">From research prototype to practical deployment. The path forward is clear.</p>
     </div>
     <div class="roadmap-grid">
       <div class="roadmap-card reveal reveal-d1" data-tilt>
         <svg class="rm-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        <h4>TernY 64M</h4>
-        <p>Complete training of the 64M parameter model on 82M tokens. Target perplexity &lt; 4.0.</p>
-        <span class="rm-status active">In Progress</span>
+        <h4 data-i18n="roadmap.card1.title">TernY 64M</h4>
+        <p data-i18n="roadmap.card1.desc">Complete training of the 64M parameter model on 82M tokens. Target perplexity &lt; 4.0.</p>
+        <span class="rm-status active" data-i18n="roadmap.card1.status">In Progress</span>
       </div>
       <div class="roadmap-card reveal reveal-d2" data-tilt>
         <svg class="rm-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <h4>Benchmark Evaluation</h4>
-        <p>Standard evaluation on MMLU, HellaSwag, and other LM benchmarks. Measure real capability.</p>
-        <span class="rm-status pending">Planned</span>
+        <h4 data-i18n="roadmap.card2.title">Benchmark Evaluation</h4>
+        <p data-i18n="roadmap.card2.desc">Standard evaluation on MMLU, HellaSwag, and other LM benchmarks. Measure real capability.</p>
+        <span class="rm-status pending" data-i18n="roadmap.card2.status">Planned</span>
       </div>
       <div class="roadmap-card reveal reveal-d3" data-tilt>
         <svg class="rm-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg>
-        <h4>C Codegen for MCU</h4>
-        <p>Port ternary transformer inference to Cortex-M0+. Packed weights, no DSP, no FPU.</p>
-        <span class="rm-status pending">Planned</span>
+        <h4 data-i18n="roadmap.card3.title">C Codegen for MCU</h4>
+        <p data-i18n="roadmap.card3.desc">Port ternary transformer inference to Cortex-M0+. Packed weights, no DSP, no FPU.</p>
+        <span class="rm-status pending" data-i18n="roadmap.card3.status">Planned</span>
       </div>
       <div class="roadmap-card reveal reveal-d4" data-tilt>
         <svg class="rm-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <h4>TernY-DL Domain Modules</h4>
-        <p>Scale-delta domain modules (200 binary deltas per domain, ~2.7 KB each). Proven concept — now productize.</p>
-        <span class="rm-status done">Confirmed</span>
+        <h4 data-i18n="roadmap.card4.title">TernY-DL Domain Modules</h4>
+        <p data-i18n="roadmap.card4.desc">Scale-delta domain modules (200 binary deltas per domain, ~2.7 KB each). Proven concept — now productize.</p>
+        <span class="rm-status done" data-i18n="roadmap.card4.status">Confirmed</span>
       </div>
     </div>
   </div>
@@ -591,22 +619,22 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 <section class="section" id="papers">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Papers</div>
-      <h2 class="section-title title-reveal">Research<br>output.</h2>
-      <p class="section-subtitle">Formal publications and codebase references.</p>
+      <div class="section-label" data-i18n="papers.label">Papers</div>
+      <h2 class="section-title title-reveal" data-i18n="papers.title">Research<br>output.</h2>
+      <p class="section-subtitle" data-i18n="papers.sub">Formal publications and codebase references.</p>
     </div>
     <div class="papers-grid">
       <div class="paper-card reveal reveal-d1">
-        <h3>TernY: Ternary Transformer by Yuriy</h3>
+        <h3 data-i18n="papers.card1.title">TernY: Ternary Transformer by Yuriy</h3>
         <div class="doi-badge">10.5281/zenodo.20725229 (concept DOI)</div>
-        <p>Full paper covering BitNet-style training, absmean STE quantization, SubLN architecture, domain-layer fine-tuning, and scaling laws for ternary transformers.</p>
-        <a href="https://doi.org/10.5281/zenodo.20725229" target="_blank" rel="noopener" class="paper-link ghost-link">Concept DOI</a>
+        <p data-i18n="papers.card1.desc">Full paper covering BitNet-style training, absmean STE quantization, SubLN architecture, domain-layer fine-tuning, and scaling laws for ternary transformers.</p>
+        <a href="https://doi.org/10.5281/zenodo.20725229" target="_blank" rel="noopener" class="paper-link ghost-link" data-i18n="papers.card1.link">Concept DOI</a>
       </div>
       <div class="paper-card reveal reveal-d2">
-        <h3>TernY Codebase</h3>
+        <h3 data-i18n="papers.card2.title">TernY Codebase</h3>
         <div class="doi-badge">10.5281/zenodo.20725229 (concept DOI)</div>
-        <p>Complete codebase including training pipeline, tokenizer, packing, domain modules. Restricted access — available upon request.</p>
-        <a href="https://doi.org/10.5281/zenodo.20725229" target="_blank" rel="noopener" class="paper-link ghost-link">Code Repository (Restricted)</a>
+        <p data-i18n="papers.card2.desc">Complete codebase including training pipeline, tokenizer, packing, domain modules. Restricted access — available upon request.</p>
+        <a href="https://doi.org/10.5281/zenodo.20725229" target="_blank" rel="noopener" class="paper-link ghost-link" data-i18n="papers.card2.link">Code Repository (Restricted)</a>
       </div>
     </div>
   </div>
@@ -615,29 +643,29 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 <section class="section" id="about">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">About</div>
-      <h2 class="section-title title-reveal">Built to prove<br>ternary works.</h2>
-      <p class="section-subtitle">TernY is an independent research project exploring whether ternary transformers can generate coherent language — and they can.</p>
+      <div class="section-label" data-i18n="about.label">About</div>
+      <h2 class="section-title title-reveal" data-i18n="about.title">Built to prove<br>ternary works.</h2>
+      <p class="section-subtitle" data-i18n="about.sub">TernY is an independent research project exploring whether ternary transformers can generate coherent language — and they can.</p>
     </div>
     <div class="about-wrap">
       <div class="about-text reveal">
-        <p>TernY is a BitNet-style ternary transformer where every weight is <strong>{-1, 0, +1}</strong>. No FP32 inference. No matrix multiplication — just additions and subtractions. The model is trained end-to-end with latent FP32 weights and Straight-Through Estimator quantization, then hardened to ternary at inference.</p>
+        <p data-i18n="about.p1">TernY is a BitNet-style ternary transformer where every weight is <strong>{-1, 0, +1}</strong>. No FP32 inference. No matrix multiplication — just additions and subtractions. The model is trained end-to-end with latent FP32 weights and Straight-Through Estimator quantization, then hardened to ternary at inference.</p>
         <div class="highlight-quote">
-          &ldquo;Training all weights in latent space with STE quantization unlocks language generation. Frozen random ternary cannot escape the loss plateau.&rdquo;
-          <cite>&mdash; TernY v3 Breakthrough Insight</cite>
+          <span data-i18n="about.blockquote">&ldquo;Training all weights in latent space with STE quantization unlocks language generation. Frozen random ternary cannot escape the loss plateau.&rdquo;</span>
+          <cite data-i18n="about.blockquoteCite">&mdash; TernY v3 Breakthrough Insight</cite>
         </div>
-        <p>At 31M parameters, TernY v3 achieves perplexity 5.0 after 10 minutes of training on a laptop RTX 3050. The 64M model is currently training. This is the starting line for practical ternary language models.</p>
+        <p data-i18n="about.p2">At 31M parameters, TernY v3 achieves perplexity 5.0 after 10 minutes of training on a laptop RTX 3050. The 64M model is currently training. This is the starting line for practical ternary language models.</p>
         <div class="about-links">
-          <a href="https://github.com/Fakeonomics/TernY-overview" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
-          <a href="#contact" class="btn btn-secondary">Contact Author</a>
+          <a href="https://github.com/Fakeonomics/TernY-overview" target="_blank" rel="noopener" class="btn btn-secondary" data-i18n="about.link1">GitHub</a>
+          <a href="#contact" class="btn btn-secondary" data-i18n="about.link2">Contact Author</a>
         </div>
       </div>
       <div class="about-badges reveal reveal-d2">
-        <div class="about-badge">Perplexity 5.0 in 10 min</div>
-        <div class="about-badge">BitNet-style training</div>
-        <div class="about-badge">All weights trainable</div>
-        <div class="about-badge">Domain Layer confirmed</div>
-        <div class="about-badge">31M / 64M models</div>
+        <div class="about-badge" data-i18n="about.badge1">Perplexity 5.0 in 10 min</div>
+        <div class="about-badge" data-i18n="about.badge2">BitNet-style training</div>
+        <div class="about-badge" data-i18n="about.badge3">All weights trainable</div>
+        <div class="about-badge" data-i18n="about.badge4">Domain Layer confirmed</div>
+        <div class="about-badge" data-i18n="about.badge5">31M / 64M models</div>
       </div>
     </div>
   </div>
@@ -646,14 +674,14 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 <section class="section" id="contact">
   <div class="container">
     <div class="cta-block reveal">
-      <h2>Interested in TernY?</h2>
-      <p>Licensing, collaboration, early access, or just want to talk ternary language models?</p>
+      <h2 data-i18n="contact.title">Interested in TernY?</h2>
+      <p data-i18n="contact.sub">Licensing, collaboration, early access, or just want to talk ternary language models?</p>
       <div class="cta-btns">
-        <a href="https://t.me/fakeonomics" target="_blank" rel="noopener" class="cta-btn primary-b">Telegram</a>
-        <a href="mailto:uv20817@gmail.com" class="cta-btn ghost">Email</a>
-        <a href="https://github.com/Fakeonomics/TernY-overview" target="_blank" rel="noopener" class="cta-btn ghost">GitHub</a>
-        <a href="https://fakeonomics.github.io/TernML-overview/" target="_blank" rel="noopener" class="cta-btn ghost">TernML</a>
-        <a href="https://fakeonomics.github.io/TernaT-overview/" target="_blank" rel="noopener" class="cta-btn ghost">TernaT</a>
+        <a href="https://t.me/fakeonomics" target="_blank" rel="noopener" class="cta-btn primary-b" data-i18n="contact.btn1">Telegram</a>
+        <a href="mailto:uv20817@gmail.com" class="cta-btn ghost" data-i18n="contact.btn2">Email</a>
+        <a href="https://github.com/Fakeonomics/TernY-overview" target="_blank" rel="noopener" class="cta-btn ghost" data-i18n="contact.btn3">GitHub</a>
+        <a href="https://fakeonomics.github.io/TernML-overview/" target="_blank" rel="noopener" class="cta-btn ghost" data-i18n="contact.btn4">TernML</a>
+        <a href="https://fakeonomics.github.io/TernaT-overview/" target="_blank" rel="noopener" class="cta-btn ghost" data-i18n="contact.btn5">TernaT</a>
       </div>
     </div>
   </div>
@@ -662,13 +690,13 @@ footer .legal{font-size:12px;color:var(--text-dimmer);margin-top:4px;line-height
 <footer>
   <div class="container">
     <div class="footer-links">
-      <a href="https://github.com/Fakeonomics/TernY-overview" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://fakeonomics.github.io/TernML-overview/" target="_blank" rel="noopener">TernML</a>
-      <a href="https://fakeonomics.github.io/TernaT-overview/" target="_blank" rel="noopener">TernaT</a>
-      <a href="https://github.com/Fakeonomics" target="_blank" rel="noopener">Fakeonomics</a>
+      <a href="https://github.com/Fakeonomics/TernY-overview" target="_blank" rel="noopener" data-i18n="footer.link1">GitHub</a>
+      <a href="https://fakeonomics.github.io/TernML-overview/" target="_blank" rel="noopener" data-i18n="footer.link2">TernML</a>
+      <a href="https://fakeonomics.github.io/TernaT-overview/" target="_blank" rel="noopener" data-i18n="footer.link3">TernaT</a>
+      <a href="https://github.com/Fakeonomics" target="_blank" rel="noopener" data-i18n="footer.link4">Fakeonomics</a>
     </div>
-    <p>Proprietary Technology &mdash; All Rights Reserved. Fakeonomics (Yuriy Venediktov).</p>
-    <p class="legal">TernY ternary transformer training pipeline and BitNet-style quantization method are protected by applicable intellectual property laws. Unauthorized reproduction or distribution prohibited.</p>
+    <p data-i18n="footer.copy">Proprietary Technology &mdash; All Rights Reserved. Fakeonomics (Yuriy Venediktov).</p>
+    <p class="legal" data-i18n="footer.legal">TernY ternary transformer training pipeline and BitNet-style quantization method are protected by applicable intellectual property laws. Unauthorized reproduction or distribution prohibited.</p>
   </div>
 </footer>
 
@@ -875,6 +903,11 @@ document.addEventListener('click', function(e) {
     menu.classList.remove('open');
   }
 });
+var i18nData = {"en":{"skipLink":"Skip to content","lang.btn":"EN","nav.metrics":"Metrics","nav.architecture":"Architecture","nav.results":"Results","nav.comparison":"Comparison","nav.timeline":"Timeline","nav.papers":"Papers","nav.about":"About","nav.contact":"Get in Touch","hero.badge":"v3.0 &middot; <span>Ternary Transformer by Yuriy</span>","hero.title":"The <span class=\"accent-text\">ternary</span><br>transformer.","hero.sub":"BitNet-style ternary LLM. Latent FP32 + STE absmean quantization. 31M params, <strong>perplexity 5.0</strong> in 10 minutes on a laptop GPU. 1.2 MB packed.","hero.ctaPrimary":"Get in Touch","hero.ctaSecondary":"Concept DOI","hero.stat1":"Parameters","hero.stat2":"Perplexity","hero.stat3":"Packed Size","hero.stat4":"Training Time","metrics.label":"Key Metrics","metrics.title":"A transformer<br>that computes in additions.","metrics.sub":"TernY trains all weights in latent FP32 with STE quantization, then hardens to ternary for inference. No FP32 math at deployment \u2014 just add and subtract.","metrics.card1.label":"Total Parameters","metrics.card1.desc":"Full model size before packing. 100% trainable.","metrics.card2.label":"Perplexity","metrics.card2.desc":"After 10 min on RTX 3050 6 GB","metrics.card3.label":"Packed Size","metrics.card3.desc":"Ternary weights after hardening","metrics.card4.label":"Model Dimension","metrics.card4.desc":"L=4, heads=6, KV=3, d_ff=1536","metrics.card5.label":"Training Tokens","metrics.card5.desc":"TinyStories + ru-classic corpus","arch.label":"Architecture","arch.title":"BitNet b1.58<br>reimagined.","arch.sub":"TernY follows the BitNet b1.58 paradigm with key innovations: SubLN normalization, ReLU\u00b2 activation, and per-channel FP16 scales.","arch.card1.title":"BitLinear","arch.card1.desc":"Latent FP32 weights with absmean STE quantization to ternary {-1,0,+1}. Per-channel FP16 scale absorbs magnitude. No multiplications \u2014 just sign flips and zero-skips.","arch.card1.tag":"STE absmean &middot; Per-channel scale","arch.card2.title":"SubLN + ReLU\u00b2","arch.card2.desc":"Double LayerNorm (pre-attention + pre-FFN). Squared ReLU activation removes negative values entirely \u2014 natural fit for ternary computation.","arch.card2.tag":"SubLN &middot; ReLU\u00b2","arch.card3.title":"GQA + RoPE","arch.card3.desc":"Grouped Query Attention (8Q/4KV) with Rotary Position Embeddings. Tied embedding matrix (FP32). No bias terms. Clean, lean decoder-only.","arch.card3.tag":"8Q/4KV &middot; RoPE &middot; Tied embeddings","results.label":"Results","results.title":"It speaks<br>(mostly) English.","results.sub":"Unconditional generations from the 31M model after 10 minutes of training on a laptop RTX 3050.","results.note":"* Sentences follow English grammar with subject-verb agreement and narrative structure. Invented words confirm the model learns syntax before vocabulary.","comp.label":"Comparison","comp.title":"GOT vs TernY<br>Two approaches.","comp.sub":"Head-to-head comparison between the frozen random ternary approach (GOT v2) and the BitNet-style trained approach (TernY v3).","comp.table.th1":"Metric","comp.table.th2":"TernY v3 (BitNet)","comp.table.th3":"GOT v2 (Frozen)","comp.row1":"Approach","comp.row1v2":"Train all weights","comp.row1v3":"97% frozen random","comp.row2":"Trainable params","comp.row2v2":"31.1M (100%)","comp.row2v3":"83K (2.3%)","comp.row3":"Perplexity","comp.row4":"Loss (2K steps)","comp.row5":"Training time","comp.row6":"Packed size","comp.row7":"Text generation","comp.row7v2":"Coherent","comp.row7v3":"None","comp.row8":"Scaling laws","comp.row8v2":"Work","comp.row8v3":"Plateau","comp.row9":"Domain layer (DL)","comp.row9v2":"Confirmed","comp.row9v3":"Confirmed","comp.note":"* TernY v3 trains all weights in latent FP32 with STE quantization. The insight: frozen ternary + per-neuron scale cannot escape the loss plateau. BitNet-style training unlocks true language generation.","timeline.label":"Timeline","timeline.title":"12 days<br>from zero to text.","timeline.sub":"TernY was built from scratch in under two weeks. Every iteration uncovered something that didn\u2019t work \u2014 and one thing that did.","timeline.day1.title":"GOT v1 \u2014 Frozen random ternary","timeline.day1.desc":"97% weights random and frozen. Only per-neuron int8 scale trains. 3.6M params, loss 5.28\u21922.40. Works on curve fitting, not on language.","timeline.day2.title":"GOT v2 \u2014 Scale-only breakthrough","timeline.day2.desc":"14M params, BPE 32k tokenizer. Loss 4063\u2192823. But perplexity plateaus at ~28 \u2014 frozen ternary hits a fundamental ceiling.","timeline.day3.title":"Complete rethink \u2014 BitNet-style TernY","timeline.day3.desc":"Abandon frozen random. Train all weights in latent FP32, use absmean STE quantization, per-channel FP16 scale, SubLN, ReLU\u00b2. Architecture reset.","timeline.day4.title":"First working text generation","timeline.day4.desc":"31M model achieves perplexity 5.0 in 10 minutes on RTX 3050. Generates grammatically correct English. The approach is validated.","timeline.day5.title":"Scaling up \u2014 64M model training","timeline.day5.desc":"63.6M params (d=768, L=6, 8Q/4KV). Training on 82M tokens. Expected ~2 hours on RTX 3050. Scaling laws confirmed.","roadmap.label":"Roadmap","roadmap.title":"What\u2019s next<br>for TernY.","roadmap.sub":"From research prototype to practical deployment. The path forward is clear.","roadmap.card1.title":"TernY 64M","roadmap.card1.desc":"Complete training of the 64M parameter model on 82M tokens. Target perplexity &lt; 4.0.","roadmap.card2.title":"Benchmark Evaluation","roadmap.card2.desc":"Standard evaluation on MMLU, HellaSwag, and other LM benchmarks. Measure real capability.","roadmap.card3.title":"C Codegen for MCU","roadmap.card3.desc":"Port ternary transformer inference to Cortex-M0+. Packed weights, no DSP, no FPU.","roadmap.card4.title":"TernY-DL Domain Modules","roadmap.card1.status":"In Progress","roadmap.card2.status":"Planned","roadmap.card3.status":"Planned","roadmap.card4.status":"Confirmed","roadmap.card4.desc":"Scale-delta domain modules (200 binary deltas per domain, ~2.7 KB each). Proven concept \u2014 now productize.","papers.label":"Papers","papers.title":"Research<br>output.","papers.sub":"Formal publications and codebase references.","papers.card1.title":"TernY: Ternary Transformer by Yuriy","papers.card1.desc":"Full paper covering BitNet-style training, absmean STE quantization, SubLN architecture, domain-layer fine-tuning, and scaling laws for ternary transformers.","papers.card1.link":"Concept DOI","papers.card2.title":"TernY Codebase","papers.card2.desc":"Complete codebase including training pipeline, tokenizer, packing, domain modules. Restricted access \u2014 available upon request.","papers.card2.link":"Code Repository (Restricted)","about.label":"About","about.title":"Built to prove<br>ternary works.","about.sub":"TernY is an independent research project exploring whether ternary transformers can generate coherent language \u2014 and they can.","about.p1":"TernY is a BitNet-style ternary transformer where every weight is <strong>{-1, 0, +1}</strong>. No FP32 inference. No matrix multiplication \u2014 just additions and subtractions. The model is trained end-to-end with latent FP32 weights and Straight-Through Estimator quantization, then hardened to ternary at inference.","about.blockquote":"\u201cTraining all weights in latent space with STE quantization unlocks language generation. Frozen random ternary cannot escape the loss plateau.\u201d","about.blockquoteCite":"\u2014 TernY v3 Breakthrough Insight","about.p2":"At 31M parameters, TernY v3 achieves perplexity 5.0 after 10 minutes of training on a laptop RTX 3050. The 64M model is currently training. This is the starting line for practical ternary language models.","about.link1":"GitHub","about.link2":"Contact Author","about.badge1":"Perplexity 5.0 in 10 min","about.badge2":"BitNet-style training","about.badge3":"All weights trainable","about.badge4":"Domain Layer confirmed","about.badge5":"31M / 64M models","contact.title":"Interested in TernY?","contact.sub":"Licensing, collaboration, early access, or just want to talk ternary language models?","contact.btn1":"Telegram","contact.btn2":"Email","contact.btn3":"GitHub","contact.btn4":"TernML","contact.btn5":"TernaT","footer.link1":"GitHub","footer.link2":"TernML","footer.link3":"TernaT","footer.link4":"Fakeonomics","footer.copy":"Proprietary Technology \u2014 All Rights Reserved. Fakeonomics (Yuriy Venediktov).","footer.legal":"TernY ternary transformer training pipeline and BitNet-style quantization method are protected by applicable intellectual property laws. Unauthorized reproduction or distribution prohibited."},"ru":{"skipLink":"\u041a \u0441\u043e\u0434\u0435\u0440\u0436\u0430\u043d\u0438\u044e","lang.btn":"RU","nav.metrics":"\u041c\u0435\u0442\u0440\u0438\u043a\u0438","nav.architecture":"\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430","nav.results":"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b","nav.comparison":"\u0421\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435","nav.timeline":"\u0425\u0440\u043e\u043d\u043e\u043b\u043e\u0433\u0438\u044f","nav.papers":"\u0421\u0442\u0430\u0442\u044c\u0438","nav.about":"\u041e \u043f\u0440\u043e\u0435\u043a\u0442\u0435","nav.contact":"\u0421\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f","hero.badge":"v3.0 &middot; <span>TernY \u2014 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439 \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440</span>","hero.title":"\u0422\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439<br><span class=\"accent-text\">\u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440</span>.","hero.sub":"\u0422\u0435\u0440\u043d\u0430\u0440\u043d\u0430\u044f LLM \u0432 \u0441\u0442\u0438\u043b\u0435 BitNet. \u041b\u0430\u0442\u0435\u043d\u0442\u043d\u044b\u0439 FP32 + STE absmean \u043a\u0432\u0430\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0435. 31M \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432, <strong>perplexity 5.0</strong> \u0437\u0430 10 \u043c\u0438\u043d\u0443\u0442 \u043d\u0430 \u043d\u043e\u0443\u0442\u0431\u0443\u0447\u043d\u043e\u043c GPU. 1.2 \u041c\u0411 \u0432 \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0435.","hero.ctaPrimary":"\u0421\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f","hero.ctaSecondary":"Concept DOI","hero.stat1":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432","hero.stat2":"Perplexity","hero.stat3":"\u0420\u0430\u0437\u043c\u0435\u0440","hero.stat4":"\u0412\u0440\u0435\u043c\u044f \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f","metrics.label":"\u041a\u043b\u044e\u0447\u0435\u0432\u044b\u0435 \u043c\u0435\u0442\u0440\u0438\u043a\u0438","metrics.title":"\u0422\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440,<br>\u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0441\u0447\u0438\u0442\u0430\u0435\u0442 \u0441\u043b\u043e\u0436\u0435\u043d\u0438\u0435\u043c.","metrics.sub":"TernY \u043e\u0431\u0443\u0447\u0430\u0435\u0442 \u0432\u0441\u0435 \u0432\u0435\u0441\u0430 \u0432 \u043b\u0430\u0442\u0435\u043d\u0442\u043d\u043e\u043c FP32 \u0441 STE-\u043a\u0432\u0430\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0435\u043c, \u0437\u0430\u0442\u0435\u043c \u0437\u0430\u043a\u0440\u0435\u043f\u043b\u044f\u0435\u0442 \u0438\u0445 \u043a\u0430\u043a \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0435 \u0434\u043b\u044f \u0438\u043d\u0444\u0435\u0440\u0435\u043d\u0441\u0430. \u0411\u0435\u0437 FP32 \u043d\u0430 \u0437\u0430\u043f\u0443\u0441\u043a\u0435 \u2014 \u0442\u043e\u043b\u044c\u043a\u043e \u0441\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438 \u0432\u044b\u0447\u0438\u0442\u0430\u043d\u0438\u0435.","metrics.card1.label":"\u0412\u0441\u0435\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432","metrics.card1.desc":"\u041f\u043e\u043b\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0434\u043e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0438. 100% \u043e\u0431\u0443\u0447\u0430\u0435\u043c\u044b\u0445.","metrics.card2.label":"Perplexity","metrics.card2.desc":"\u041f\u043e\u0441\u043b\u0435 10 \u043c\u0438\u043d \u043d\u0430 RTX 3050 6 GB","metrics.card3.label":"\u0420\u0430\u0437\u043c\u0435\u0440 \u0432 \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0435","metrics.card3.desc":"\u0422\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0435 \u0432\u0435\u0441\u0430 \u043f\u043e\u0441\u043b\u0435 \u0437\u0430\u043a\u0440\u0435\u043f\u043b\u0435\u043d\u0438\u044f","metrics.card4.label":"\u0420\u0430\u0437\u043c\u0435\u0440\u043d\u043e\u0441\u0442\u044c \u043c\u043e\u0434\u0435\u043b\u0438","metrics.card4.desc":"L=4, heads=6, KV=3, d_ff=1536","metrics.card5.label":"\u041e\u0431\u0443\u0447\u0430\u044e\u0449\u0438\u0445 \u0442\u043e\u043a\u0435\u043d\u043e\u0432","metrics.card5.desc":"TinyStories + ru-classic \u043a\u043e\u0440\u043f\u0443\u0441","arch.label":"\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430","arch.title":"BitNet b1.58<br>\u043f\u0435\u0440\u0435\u043e\u0441\u043c\u044b\u0441\u043b\u0435\u043d\u043d\u044b\u0439.","arch.sub":"TernY \u0441\u043b\u0435\u0434\u0443\u0435\u0442 \u043f\u0430\u0440\u0430\u0434\u0438\u0433\u043c\u0435 BitNet b1.58 \u0441 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u043c\u0438 \u043d\u043e\u0432\u043e\u0432\u0432\u0435\u0434\u0435\u043d\u0438\u044f\u043c\u0438: \u043d\u043e\u0440\u043c\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f SubLN, \u0430\u043a\u0442\u0438\u0432\u0430\u0446\u0438\u044f ReLU\u00b2, \u0438 per-channel FP16 \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u044b.","arch.card1.title":"BitLinear","arch.card1.desc":"\u041b\u0430\u0442\u0435\u043d\u0442\u043d\u044b\u0435 FP32 \u0432\u0435\u0441\u0430 \u0441 STE absmean \u043a\u0432\u0430\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0435\u043c \u0432 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0435 {-1,0,+1}. Per-channel FP16 \u043c\u0430\u0441\u0448\u0442\u0430\u0431 \u043f\u043e\u0433\u043b\u043e\u0449\u0430\u0435\u0442 \u0432\u0435\u043b\u0438\u0447\u0438\u043d\u0443. \u041d\u0438\u043a\u0430\u043a\u0438\u0445 \u0443\u043c\u043d\u043e\u0436\u0435\u043d\u0438\u0439 \u2014 \u0442\u043e\u043b\u044c\u043a\u043e \u0441\u043c\u0435\u043d\u0430 \u0437\u043d\u0430\u043a\u043e\u0432 \u0438 \u043f\u0440\u043e\u043f\u0443\u0441\u043a \u043d\u0443\u043b\u0435\u0439.","arch.card1.tag":"STE absmean &middot; Per-channel scale","arch.card2.title":"SubLN + ReLU\u00b2","arch.card2.desc":"\u0414\u0432\u043e\u0439\u043d\u043e\u0439 LayerNorm (pre-attention + pre-FFN). \u041a\u0432\u0430\u0434\u0440\u0430\u0442\u0438\u0447\u043d\u0430\u044f ReLU \u0443\u0431\u0438\u0440\u0430\u0435\u0442 \u043e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e \u2014 \u0435\u0441\u0442\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0441\u043e\u0447\u0435\u0442\u0430\u043d\u0438\u0435 \u0441 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u043c\u0438 \u0432\u044b\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f\u043c\u0438.","arch.card2.tag":"SubLN &middot; ReLU\u00b2","arch.card3.title":"GQA + RoPE","arch.card3.desc":"\u0413\u0440\u0443\u043f\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0435 \u0432\u043d\u0438\u043c\u0430\u043d\u0438\u0435 (8Q/4KV) \u0441 \u0440\u043e\u0442\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u043c\u0438 \u043f\u043e\u0437\u0438\u0446\u0438\u043e\u043d\u043d\u044b\u043c\u0438 \u0432\u0441\u0442\u0440\u0430\u0438\u0432\u0430\u043d\u0438\u044f\u043c\u0438. \u0421\u0432\u044f\u0437\u0430\u043d\u043d\u0430\u044f \u043c\u0430\u0442\u0440\u0438\u0446\u0430 \u0432\u0441\u0442\u0440\u0430\u0438\u0432\u0430\u043d\u0438\u0439 (FP32). \u0411\u0435\u0437 \u0441\u043c\u0435\u0449\u0435\u043d\u0438\u0439. \u0427\u0438\u0441\u0442\u044b\u0439 decoder-only.","arch.card3.tag":"8Q/4KV &middot; RoPE &middot; Tied embeddings","results.label":"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b","results.title":"\u041e\u043d \u0433\u043e\u0432\u043e\u0440\u0438\u0442<br>(\u043f\u043e\u0447\u0442\u0438) \u043f\u043e-\u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438.","results.sub":"\u0411\u0435\u0437\u0443\u0441\u043b\u043e\u0432\u043d\u044b\u0435 \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u0438 \u043c\u043e\u0434\u0435\u043b\u0438 31M \u043f\u043e\u0441\u043b\u0435 10 \u043c\u0438\u043d\u0443\u0442 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f \u043d\u0430 \u043d\u043e\u0443\u0442\u0431\u0443\u0447\u043d\u043e\u043c RTX 3050.","results.note":"* \u041f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0441\u043b\u0435\u0434\u0443\u044e\u0442 \u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u043e\u0439 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0435. \u0412\u044b\u0434\u0443\u043c\u0430\u043d\u043d\u044b\u0435 \u0441\u043b\u043e\u0432\u0430 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u044e\u0442, \u0447\u0442\u043e \u043c\u043e\u0434\u0435\u043b\u044c \u0441\u043d\u0430\u0447\u0430\u043b\u0430 \u0438\u0437\u0443\u0447\u0430\u0435\u0442 \u0441\u0438\u043d\u0442\u0430\u043a\u0441\u0438\u0441, \u043f\u043e\u0442\u043e\u043c \u043b\u0435\u043a\u0441\u0438\u043a\u0443.","comp.label":"\u0421\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435","comp.title":"GOT vs TernY<br>\u0414\u0432\u0430 \u043f\u043e\u0434\u0445\u043e\u0434\u0430.","comp.sub":"\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0435 \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435 \u0437\u0430\u043c\u043e\u0440\u043e\u0436\u0435\u043d\u043d\u043e\u0433\u043e \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u043e\u0433\u043e \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u043e\u0433\u043e \u043f\u043e\u0434\u0445\u043e\u0434\u0430 (GOT v2) \u0438 \u043e\u0431\u0443\u0447\u0430\u0435\u043c\u043e\u0433\u043e BitNet-\u0441\u0442\u0438\u043b\u044f (TernY v3).","comp.table.th1":"\u041c\u0435\u0442\u0440\u0438\u043a\u0430","comp.table.th2":"TernY v3 (BitNet)","comp.table.th3":"GOT v2 (\u0437\u0430\u043c\u043e\u0440\u043e\u0436\u0435\u043d)","comp.row1":"\u041f\u043e\u0434\u0445\u043e\u0434","comp.row1v2":"\u0412\u0441\u0435 \u0432\u0435\u0441\u0430 \u043e\u0431\u0443\u0447\u0430\u044e\u0442\u0441\u044f","comp.row1v3":"97% \u0437\u0430\u043c\u043e\u0440\u043e\u0436\u0435\u043d\u043e \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u043e","comp.row2":"\u041e\u0431\u0443\u0447\u0430\u0435\u043c\u044b\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432","comp.row2v2":"31.1M (100%)","comp.row2v3":"83K (2.3%)","comp.row3":"Perplexity","comp.row4":"\u041f\u043e\u0442\u0435\u0440\u0438 (2K \u0448\u0430\u0433\u043e\u0432)","comp.row5":"\u0412\u0440\u0435\u043c\u044f \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f","comp.row6":"\u0420\u0430\u0437\u043c\u0435\u0440 \u0432 \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0435","comp.row7":"\u0413\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044f \u0442\u0435\u043a\u0441\u0442\u0430","comp.row7v2":"\u0421\u0432\u044f\u0437\u043d\u0430\u044f","comp.row7v3":"\u041d\u0435\u0442","comp.row8":"\u0417\u0430\u043a\u043e\u043d\u044b \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f","comp.row8v2":"\u0420\u0430\u0431\u043e\u0442\u0430\u044e\u0442","comp.row8v3":"\u041f\u043b\u0430\u0442\u043e","comp.row9":"Domain Layer (DL)","comp.row9v2":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d","comp.row9v3":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d","comp.note":"* TernY v3 \u043e\u0431\u0443\u0447\u0430\u0435\u0442 \u0432\u0441\u0435 \u0432\u0435\u0441\u0430 \u0432 \u043b\u0430\u0442\u0435\u043d\u0442\u043d\u043e\u043c FP32. \u0418\u043d\u0441\u0430\u0439\u0442: \u0437\u0430\u043c\u043e\u0440\u043e\u0436\u0435\u043d\u043d\u044b\u0439 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439 + per-neuron scale \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0432\u044b\u0439\u0442\u0438 \u0438\u0437 \u043f\u043b\u0430\u0442\u043e \u043f\u043e\u0442\u0435\u0440\u044c. \u0422\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0430 BitNet-\u0441\u0442\u0438\u043b\u044f \u0440\u0430\u0441\u043a\u0440\u044b\u0432\u0430\u0435\u0442 \u0438\u0441\u0442\u0438\u043d\u043d\u0443\u044e \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044f\u0437\u044b\u043a\u0430.","timeline.label":"\u0425\u0440\u043e\u043d\u043e\u043b\u043e\u0433\u0438\u044f","timeline.title":"12 \u0434\u043d\u0435\u0439<br>\u043e\u0442 \u043d\u0443\u043b\u044f \u0434\u043e \u0442\u0435\u043a\u0441\u0442\u0430.","timeline.sub":"TernY \u0431\u044b\u043b \u0441\u043e\u0437\u0434\u0430\u043d \u0441 \u043d\u0443\u043b\u044f \u043c\u0435\u043d\u0435\u0435 \u0447\u0435\u043c \u0437\u0430 \u0434\u0432\u0435 \u043d\u0435\u0434\u0435\u043b\u0438. \u041a\u0430\u0436\u0434\u0430\u044f \u0438\u0442\u0435\u0440\u0430\u0446\u0438\u044f \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u043b\u0430 \u0447\u0442\u043e-\u0442\u043e, \u0447\u0442\u043e \u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u043b\u043e \u2014 \u0438 \u043e\u0434\u043d\u043e, \u0447\u0442\u043e \u0441\u0440\u0430\u0431\u043e\u0442\u0430\u043b\u043e.","timeline.day1.title":"GOT v1 \u2014 \u0417\u0430\u043c\u043e\u0440\u043e\u0436\u0435\u043d\u043d\u044b\u0439 \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u044b\u0439 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439","timeline.day1.desc":"97% \u0432\u0435\u0441\u043e\u0432 \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u044b\u0435 \u0438 \u0437\u0430\u043c\u043e\u0440\u043e\u0436\u0435\u043d\u044b. \u0422\u043e\u043b\u044c\u043a\u043e per-neuron int8 scale \u043e\u0431\u0443\u0447\u0430\u0435\u0442\u0441\u044f. 3.6M \u043f\u0430\u0440\u0430\u043c, loss 5.28\u21922.40. \u0420\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u043d\u0430 \u043f\u043e\u0434\u0433\u043e\u043d\u043a\u0435 \u043a\u0440\u0438\u0432\u044b\u0445, \u043d\u043e \u043d\u0435 \u043d\u0430 \u044f\u0437\u044b\u043a\u0435.","timeline.day2.title":"GOT v2 \u2014 \u041f\u0440\u043e\u0440\u044b\u0432 \u0442\u043e\u043b\u044c\u043a\u043e \u0447\u0435\u0440\u0435\u0437 scale","timeline.day2.desc":"14M \u043f\u0430\u0440\u0430\u043c, BPE 32k \u0442\u043e\u043a\u0435\u043d\u0438\u0437\u0430\u0442\u043e\u0440. Loss 4063\u2192823. \u041d\u043e perplexity \u0437\u0430\u0441\u0442\u0440\u0435\u0432\u0430\u0435\u0442 \u043d\u0430 ~28 \u2014 \u0437\u0430\u043c\u043e\u0440\u043e\u0436\u0435\u043d\u043d\u044b\u0439 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439 \u0443\u043f\u0438\u0440\u0430\u0435\u0442\u0441\u044f \u0432 \u043f\u043e\u0442\u043e\u043b\u043e\u043a.","timeline.day3.title":"\u041f\u043e\u043b\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0441\u043c\u043e\u0442\u0440 \u2014 TernY \u0432 \u0441\u0442\u0438\u043b\u0435 BitNet","timeline.day3.desc":"\u041e\u0442\u043a\u0430\u0437 \u043e\u0442 frozen random. \u041e\u0431\u0443\u0447\u0430\u0435\u043c \u0432\u0441\u0435 \u0432\u0435\u0441\u0430 \u0432 \u043b\u0430\u0442\u0435\u043d\u0442\u043d\u043e\u043c FP32, absmean STE \u043a\u0432\u0430\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0435, per-channel FP16 \u043c\u0430\u0441\u0448\u0442\u0430\u0431, SubLN, ReLU\u00b2. \u0421\u0431\u0440\u043e\u0441 \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u044b.","timeline.day4.title":"\u041f\u0435\u0440\u0432\u0430\u044f \u0440\u0430\u0431\u043e\u0447\u0430\u044f \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044f \u0442\u0435\u043a\u0441\u0442\u0430","timeline.day4.desc":"\u041c\u043e\u0434\u0435\u043b\u044c 31M \u0434\u043e\u0441\u0442\u0438\u0433\u0430\u0435\u0442 perplexity 5.0 \u0437\u0430 10 \u043c\u0438\u043d\u0443\u0442 \u043d\u0430 RTX 3050. \u0413\u0435\u043d\u0435\u0440\u0438\u0440\u0443\u0435\u0442 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0439 \u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439. \u041f\u043e\u0434\u0445\u043e\u0434 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d.","timeline.day5.title":"\u041c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u2014 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435 64M","timeline.day5.desc":"63.6M \u043f\u0430\u0440\u0430\u043c (d=768, L=6, 8Q/4KV). \u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435 \u043d\u0430 82M \u0442\u043e\u043a\u0435\u043d\u0430\u0445. \u041e\u0436\u0438\u0434\u0430\u0435\u043c\u043e\u0435 \u0432\u0440\u0435\u043c\u044f ~2 \u0447\u0430\u0441\u0430 \u043d\u0430 RTX 3050. \u0417\u0430\u043a\u043e\u043d\u044b \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u044b.","roadmap.label":"\u041f\u043b\u0430\u043d\u044b","roadmap.title":"\u0427\u0442\u043e \u0434\u0430\u043b\u044c\u0448\u0435<br> \u0434\u043b\u044f TernY.","roadmap.sub":"\u041e\u0442 \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0433\u043e \u043f\u0440\u043e\u0442\u043e\u0442\u0438\u043f\u0430 \u043a \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u043c\u0443 \u043f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u0438\u044e. \u041f\u0443\u0442\u044c \u0432\u043f\u0435\u0440\u0451\u0434 \u044f\u0441\u0435\u043d.","roadmap.card1.title":"TernY 64M","roadmap.card1.desc":"\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f \u043c\u043e\u0434\u0435\u043b\u0438 64M \u043d\u0430 82M \u0442\u043e\u043a\u0435\u043d\u0430\u0445. \u0426\u0435\u043b\u0435\u0432\u043e\u0439 perplexity &lt; 4.0.","roadmap.card2.title":"\u0411\u0435\u043d\u0447\u043c\u0430\u0440\u043a\u0438","roadmap.card2.desc":"\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u043e\u0446\u0435\u043d\u0438\u0432\u0430\u043d\u0438\u0435 \u043d\u0430 MMLU, HellaSwag \u0438 \u0434\u0440\u0443\u0433\u0438\u0445 \u0431\u0435\u043d\u0447\u043c\u0430\u0440\u043a\u0430\u0445. \u0418\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u0435 \u0440\u0435\u0430\u043b\u044c\u043d\u044b\u0445 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0435\u0439.","roadmap.card3.title":"C \u043a\u043e\u0434\u043e\u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044f \u0434\u043b\u044f MCU","roadmap.card3.desc":"\u041f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u043e\u0433\u043e \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440\u0430 \u043d\u0430 Cortex-M0+. \u0423\u043f\u0430\u043a\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0432\u0435\u0441\u0430, \u0431\u0435\u0437 DSP, \u0431\u0435\u0437 FPU.","roadmap.card4.title":"TernY-DL \u0434\u043e\u043c\u0435\u043d\u043d\u044b\u0435 \u043c\u043e\u0434\u0443\u043b\u0438","roadmap.card1.status":"\u0412 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0435","roadmap.card2.status":"\u0417\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043e","roadmap.card3.status":"\u0417\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043e","roadmap.card4.status":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u043e","roadmap.card4.desc":"Scale-delta \u0434\u043e\u043c\u0435\u043d\u043d\u044b\u0435 \u043c\u043e\u0434\u0443\u043b\u0438 (200 \u0431\u0438\u043d\u0430\u0440\u043d\u044b\u0445 \u0434\u0435\u043b\u044c\u0442 \u043d\u0430 \u043c\u043e\u0434\u0443\u043b\u044c, ~2.7 KB \u043a\u0430\u0436\u0434\u044b\u0439). \u041a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u044f \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0430 \u2014 \u0442\u0435\u043f\u0435\u0440\u044c \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438\u0437\u0430\u0446\u0438\u044f.","papers.label":"\u0421\u0442\u0430\u0442\u044c\u0438","papers.title":"\u041d\u0430\u0443\u0447\u043d\u044b\u0435<br>\u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438.","papers.sub":"\u041e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0435 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438 \u0438 \u0441\u0441\u044b\u043b\u043a\u0438 \u043d\u0430 \u043a\u043e\u0434\u043e\u0432\u0443\u044e \u0431\u0430\u0437\u0443.","papers.card1.title":"TernY: \u0422\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439 \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440 \u043e\u0442 Yuriy","papers.card1.desc":"\u041f\u043e\u043b\u043d\u0430\u044f \u0441\u0442\u0430\u0442\u044c\u044f \u043e BitNet-\u0442\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0435, absmean STE \u043a\u0432\u0430\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0438, \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0435 SubLN, \u0434\u043e\u043c\u0435\u043d\u043d\u043e\u0439 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0435 \u0438 \u0437\u0430\u043a\u043e\u043d\u0430\u0445 \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0445 \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440\u043e\u0432.","papers.card1.link":"Concept DOI","papers.card2.title":"\u041a\u043e\u0434\u043e\u0432\u0430\u044f \u0431\u0430\u0437\u0430 TernY","papers.card2.desc":"\u041f\u043e\u043b\u043d\u0430\u044f \u043a\u043e\u0434\u043e\u0432\u0430\u044f \u0431\u0430\u0437\u0430: \u043f\u0430\u0439\u043f\u043b\u0430\u0439\u043d \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f, \u0442\u043e\u043a\u0435\u043d\u0438\u0437\u0430\u0442\u043e\u0440, \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0430, \u0434\u043e\u043c\u0435\u043d\u043d\u044b\u0435 \u043c\u043e\u0434\u0443\u043b\u0438. \u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u2014 \u043f\u043e \u0437\u0430\u043f\u0440\u043e\u0441\u0443.","papers.card2.link":"\u0420\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0438\u0439 (\u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0439)","about.label":"\u041e \u043f\u0440\u043e\u0435\u043a\u0442\u0435","about.title":"\u0421\u043e\u0437\u0434\u0430\u043d, \u0447\u0442\u043e\u0431\u044b \u0434\u043e\u043a\u0430\u0437\u0430\u0442\u044c:<br>\u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442.","about.sub":"TernY \u2014 \u044d\u0442\u043e \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u044b\u0439 \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u043f\u0440\u043e\u0435\u043a\u0442, \u0438\u0437\u0443\u0447\u0430\u044e\u0449\u0438\u0439, \u043c\u043e\u0433\u0443\u0442 \u043b\u0438 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0435 \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440\u044b \u0433\u0435\u043d\u0435\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0432\u044f\u0437\u043d\u044b\u0439 \u044f\u0437\u044b\u043a \u2014 \u0438 \u043c\u043e\u0433\u0443\u0442.","about.p1":"TernY \u2014 \u044d\u0442\u043e \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439 \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440 \u0432 \u0441\u0442\u0438\u043b\u0435 BitNet, \u0433\u0434\u0435 \u043a\u0430\u0436\u0434\u044b\u0439 \u0432\u0435\u0441 <strong>{-1, 0, +1}</strong>. \u0411\u0435\u0437 FP32 \u0438\u043d\u0444\u0435\u0440\u0435\u043d\u0441\u0430. \u0411\u0435\u0437 \u0443\u043c\u043d\u043e\u0436\u0435\u043d\u0438\u044f \u043c\u0430\u0442\u0440\u0438\u0446 \u2014 \u0442\u043e\u043b\u044c\u043a\u043e \u0441\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438 \u0432\u044b\u0447\u0438\u0442\u0430\u043d\u0438\u0435. \u041c\u043e\u0434\u0435\u043b\u044c \u043e\u0431\u0443\u0447\u0430\u0435\u0442\u0441\u044f end-to-end \u0441 \u043b\u0430\u0442\u0435\u043d\u0442\u043d\u044b\u043c\u0438 FP32 \u0432\u0435\u0441\u0430\u043c\u0438 \u0438 Straight-Through Estimator \u043a\u0432\u0430\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0435\u043c, \u0437\u0430\u0442\u0435\u043c \u0437\u0430\u043a\u0440\u0435\u043f\u043b\u044f\u0435\u0442\u0441\u044f \u0434\u043e \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u043e\u0433\u043e \u0434\u043b\u044f \u0438\u043d\u0444\u0435\u0440\u0435\u043d\u0441\u0430.","about.blockquote":"\u00ab\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u0435\u0441\u043e\u0432 \u0432 \u043b\u0430\u0442\u0435\u043d\u0442\u043d\u043e\u043c \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0435 \u0441 STE \u043a\u0432\u0430\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0435\u043c \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u0435\u0442 \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044f\u0437\u044b\u043a\u0430. \u0417\u0430\u043c\u043e\u0440\u043e\u0436\u0435\u043d\u043d\u044b\u0439 \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u044b\u0439 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0439 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0432\u044b\u0439\u0442\u0438 \u0438\u0437 \u043f\u043b\u0430\u0442\u043e \u043f\u043e\u0442\u0435\u0440\u044c.\u00bb","about.blockquoteCite":"\u2014 \u041a\u043b\u044e\u0447\u0435\u0432\u043e\u0439 \u0438\u043d\u0441\u0430\u0439\u0442 TernY v3","about.p2":"\u041f\u0440\u0438 31M \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445, TernY v3 \u0434\u043e\u0441\u0442\u0438\u0433\u0430\u0435\u0442 perplexity 5.0 \u043f\u043e\u0441\u043b\u0435 10 \u043c\u0438\u043d\u0443\u0442 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f \u043d\u0430 \u043d\u043e\u0443\u0442\u0431\u0443\u0447\u043d\u043e\u043c RTX 3050. \u041c\u043e\u0434\u0435\u043b\u044c 64M \u0441\u0435\u0439\u0447\u0430\u0441 \u043e\u0431\u0443\u0447\u0430\u0435\u0442\u0441\u044f. \u042d\u0442\u043e \u0441\u0442\u0430\u0440\u0442\u043e\u0432\u0430\u044f \u0447\u0435\u0440\u0442\u0430 \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0445 \u044f\u0437\u044b\u043a\u043e\u0432\u044b\u0445 \u043c\u043e\u0434\u0435\u043b\u0435\u0439.","about.link1":"GitHub","about.link2":"\u0421\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f \u0441 \u0430\u0432\u0442\u043e\u0440\u043e\u043c","about.badge1":"Perplexity 5.0 \u0437\u0430 10 \u043c\u0438\u043d","about.badge2":"\u0422\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0430 BitNet-\u0441\u0442\u0438\u043b\u044f","about.badge3":"\u0412\u0441\u0435 \u0432\u0435\u0441\u0430 \u043e\u0431\u0443\u0447\u0430\u0435\u043c\u044b","about.badge4":"Domain Layer \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0451\u043d","about.badge5":"\u041c\u043e\u0434\u0435\u043b\u0438 31M / 64M","contact.title":"\u0418\u043d\u0442\u0435\u0440\u0435\u0441\u0443\u0435\u0442 TernY?","contact.sub":"\u041b\u0438\u0446\u0435\u043d\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435, \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u043e, \u0440\u0430\u043d\u043d\u0438\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u0438\u043b\u0438 \u043f\u0440\u043e\u0441\u0442\u043e \u0436\u0435\u043b\u0430\u043d\u0438\u0435 \u043f\u043e\u0433\u043e\u0432\u043e\u0440\u0438\u0442\u044c \u043e \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u044b\u0445 \u044f\u0437\u044b\u043a\u043e\u0432\u044b\u0445 \u043c\u043e\u0434\u0435\u043b\u044f\u0445?","contact.btn1":"Telegram","contact.btn2":"Email","contact.btn3":"GitHub","contact.btn4":"TernML","contact.btn5":"TernaT","footer.link1":"GitHub","footer.link2":"TernML","footer.link3":"TernaT","footer.link4":"Fakeonomics","footer.copy":"\u041f\u0440\u043e\u043f\u0440\u0438\u0435\u0442\u0430\u0440\u043d\u0430\u044f \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u044f \u2014 \u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b. Fakeonomics (Yuriy Venediktov).","footer.legal":"\u041f\u0430\u0439\u043f\u043b\u0430\u0439\u043d \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f \u0442\u0435\u0440\u043d\u0430\u0440\u043d\u043e\u0433\u043e \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0435\u0440\u0430 TernY \u0438 \u043c\u0435\u0442\u043e\u0434 \u043a\u0432\u0430\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u044f BitNet-\u0441\u0442\u0438\u043b\u044f \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b \u0437\u0430\u043a\u043e\u043d\u043e\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e\u043c \u043e\u0431 \u0438\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u043e\u0431\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0441\u0442\u0438. \u041d\u0435\u0441\u0430\u043d\u043a\u0446\u0438\u043e\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0435 \u0432\u043e\u0441\u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u0438\u043b\u0438 \u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0440\u0435\u0449\u0435\u043d\u043e."};
+function applyLang(lang){if(!i18nData[lang])return;var t=i18nData[lang];document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(t[k]!==undefined){el.innerHTML=t[k];}});localStorage.setItem('terny-lang',lang);var btn=document.getElementById('langToggle');if(btn)btn.textContent=t['lang.btn'];}
+var savedLang=localStorage.getItem('terny-lang')||'en';
+applyLang(savedLang);
+document.getElementById('langToggle').addEventListener('click',function(){var next=savedLang==='en'?'ru':'en';savedLang=next;applyLang(next);});
 </script>
 
 </body>
