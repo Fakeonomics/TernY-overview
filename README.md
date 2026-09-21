@@ -1,8 +1,9 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20725229.svg)](https://doi.org/10.5281/zenodo.20725229) [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red)]() [![TernY Site](https://img.shields.io/badge/TernY-Live%20Site-f43f5e?style=for-the-badge)](https://fakeonomics.github.io/TernY-overview/)
 
-# TernY: Ternary Transformer by Yuriy
+<div align="center"><h1><code>TernY-overview</code></h1><h3>BitNet-style ternary transformer. Perplexity 5.0 in 10 min on RTX 3050.</h3></div>
 
-A BitNet-style ternary transformer with **{-1, 0, +1}** weights.  
+Site: https://fakeonomics.github.io/TernY-overview/
+
 **31.1M params · Perplexity 5.0 · 1.2 MB packed · 10 min training**
 
 Latent FP32 weights with absmean STE quantization to ternary. Per-channel FP16 scale. SubLN + ReLU² + GQA + RoPE. All weights trainable — no frozen random.
